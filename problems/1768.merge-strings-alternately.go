@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 /*
  * @lc app=leetcode id=1768 lang=golang
  *
@@ -94,7 +92,3 @@ func mergeAlternately(word1 string, word2 string) string {
 }
 
 // @lc code=end
-
-func main() {
-	fmt.Println(mergeAlternately("cf", "eee"))
-}
