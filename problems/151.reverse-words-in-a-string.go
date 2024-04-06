@@ -1,5 +1,7 @@
 package main
 
+import "strings"
+
 /*
  * @lc app=leetcode id=151 lang=golang
  *
@@ -71,39 +73,18 @@ package main
 
 // @lc code=start
 func reverseWords(s string) string {
-	w := []string{}
-	c := 0
-	l := len(s)
+	v := strings.Split(s, " ")
+	return strings.Join(rev(v), " ")
+}
 
-	for i, v := range s {
-		if (i == 0 && v == ' ') || (v == ' ' && i != 0 && []rune(s)[i-1] == ' ') {
-			continue
-		}
-		if i == l-1 && v != ' ' {
-			i++
-			c++
-			w = append(w, string(s[i-c:i]))
-			continue
-		}
-		if v == ' ' {
-			w = append(w, string(s[i-c:i]))
-			c = 0
-			continue
-		}
-		c++
-	}
-
-	lw := len(w)
-	res := ""
-
-	for i := lw - 1; i >= 0; i-- {
-		res += w[i]
-		if i != 0 {
-			res += " "
+func rev(s []string) []string {
+	r := []string{}
+	for i := len(s) - 1; i >= 0; i-- {
+		if len(s[i]) > 0 {
+			r = append(r, s[i])
 		}
 	}
-
-	return res
+	return r
 }
 
 // @lc code=end
