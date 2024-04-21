@@ -45,15 +45,10 @@ func moveZeroes(nums []int) {
 
 	zero := 0
 	for i, v := range nums {
-		if v == 0 {
+		if v != 0 {
+			nums[zero], nums[i] = nums[i], nums[zero]
 			zero++
-		} else {
-			nums[i-zero] = v
 		}
-	}
-	l := len(nums)
-	for i := 0; i < zero; i++ {
-		nums[l-1-i] = 0
 	}
 }
 
