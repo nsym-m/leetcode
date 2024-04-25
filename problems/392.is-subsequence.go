@@ -49,22 +49,21 @@ package main
 // @lc code=start
 func isSubsequence(s string, t string) bool {
 
-	var a []struct{}
-
 	ls := len(s)
 	lt := len(t)
-	index := 0
-
-	for i := 0; i < ls; i++ {
-		for j := index; j < lt; j++ {
-			if s[i] == t[j] {
-				a = append(a, struct{}{})
-				index = j + 1
-				break
-			}
+	if ls > lt {
+		return false
+	}
+	if ls == 0 {
+		return true
+	}
+	subsequence := 0
+	for i := 0; i < lt; i++ {
+		if ls-1 >= subsequence && s[subsequence] == t[i] {
+			subsequence++
 		}
 	}
-	return len(a) == ls
+	return subsequence == ls
 }
 
 // @lc code=end
